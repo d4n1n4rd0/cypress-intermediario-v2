@@ -14,7 +14,7 @@ Cypress.Commands.add('login', (
   const validate = () => {
     cy.visit('/')
     cy.location('pathname', { timeout: 1000 })
-      .should('not.eq', '/users/sign_in')
+      .should('not.eq', '/users/sign_in') //Se o location não for igual ao '/users/sign_in' restaura a sessão
   }
 
   const options = {
@@ -41,4 +41,15 @@ Cypress.Commands.add('gui_createProject', project => {
   cy.get('#project_description').type(project.description)
   cy.get('.qa-initialize-with-readme-checkbox').check()
   cy.contains('Create project').click()
+})
+
+Cypress.Commands.add('gui_createIssue', (issue) => {
+  cy.visit('/')
+
+  cy.get('.avatar-container').first().click()
+  cy.get('.qa-issues-item').click()
+  cy.get('#new_issue_link').click()
+  cy.get('#issue_title').type(issue.name)
+  cy.get('#issue_description').type(issue.description)
+  cy.get('input[type="submit"]').click()
 })
