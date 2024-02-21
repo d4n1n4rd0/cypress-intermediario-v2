@@ -1,23 +1,27 @@
 import { faker } from '@faker-js/faker'
 
+//Aula 05 - Testando criação de issue
+
 describe('Create Issue', () => {
-    beforeEach(() => {
-      cy.login()
-    })
+  const issue = {
+    title: `issue-${faker.datatype.uuid()}`,
+    description: faker.random.words(3),
+    project: {
+      name: `project-${faker.datatype.uuid()}`,
+      description: faker.random.words(5)
+    }
+  }
 
-  //Aula 05 - Testando criação de issue
+  beforeEach(() => {
+    cy.login()
+    cy.gui_createProject(issue.project)
+  })
 
-    it('successfully', () => {
-    const issue = {
-        name: `issue-${faker.datatype.uuid()}`,
-        description: faker.random.words(5)
-        }
-      
+  it('successfully', () => {
     cy.gui_createIssue(issue)
 
-    cy.contains(issue.name).should('be.visible')
-    cy.contains(issue.description).should('be.visible')
-    
-    })
+    cy.get('.issue-details')
+      .should('contain', issue.title)
+      .and('contain', issue.description)
   })
-  
+})
