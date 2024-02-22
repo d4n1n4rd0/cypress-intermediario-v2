@@ -14,6 +14,7 @@ describe('Create Issue', () => {
 
   beforeEach(() => {
     cy.login()
+    cy.api_deleteProjects()
     cy.gui_createProject(issue.project)
   })
 
