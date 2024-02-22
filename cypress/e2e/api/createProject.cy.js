@@ -2,20 +2,8 @@ import { faker } from '@faker-js/faker'
 const accessToken = `Bearer ${Cypress.env('gitlab_access_token')}`
 
 describe('Create Project', () => {
-    beforeEach(() => {
-        cy.request({
-            method: 'GET',
-            url: `/api/v4/projects/`,
-            headers: { Authorization: accessToken }
-          }).then((response) =>{
-            response.body.forEach(project => {
-                cy.request({
-                    method: 'DELETE',
-                    url: `/api/v4/projects/${project.id}`,
-                    headers: { Authorization: accessToken },
-                })
-            })
-          })
+    describe('Create project', () => {
+        beforeEach(() => cy.api_deleteProjects())
     })
   it('successfully', () => {
     const project = {
