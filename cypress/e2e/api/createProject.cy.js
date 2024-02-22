@@ -2,9 +2,8 @@ import { faker } from '@faker-js/faker'
 const accessToken = `Bearer ${Cypress.env('gitlab_access_token')}`
 
 describe('Create Project', () => {
-    describe('Create project', () => {
         beforeEach(() => cy.api_deleteProjects())
-    })
+    
   it('successfully', () => {
     const project = {
       name: `project-API-${faker.datatype.uuid()}`,
@@ -18,6 +17,5 @@ describe('Create Project', () => {
         expect(response.body.description).to.equal(project.description)
         console.log(response.body)
       })
-  })
-}) 
-  
+   })
+})
