@@ -3,6 +3,7 @@
     describe('Create Project', () => {
       beforeEach(() => {
         cy.login()
+        cy.api_deleteProjects()
       })
 
     //Aula 04 - Testando a funcionalidade de criação de projeto
