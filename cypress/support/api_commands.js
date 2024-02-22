@@ -9,6 +9,6 @@ Cypress.Commands.add('api_createProject', project => {
       description: project.description,
       initialize_with_readme: true
     },
-    headers: { Authorization: accessToken },
+    headers: { Authorization: accessToken }
   })
 })
