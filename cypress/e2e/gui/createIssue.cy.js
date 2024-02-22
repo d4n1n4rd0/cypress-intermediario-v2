@@ -1,8 +1,9 @@
 import { faker } from '@faker-js/faker'
+const options = { env: { snapshotOnly: true } }
 
 //Aula 05 - Testando criação de issue
 
-describe('Create Issue', () => {
+describe('Create Issue', options, () => {
   const issue = {
     title: `issue-${faker.datatype.uuid()}`,
     description: faker.random.words(3),
