@@ -15,7 +15,6 @@ describe('Create Project', () => {
         expect(response.status).to.equal(201)
         expect(response.body.name).to.equal(project.name)
         expect(response.body.description).to.equal(project.description)
-        console.log(response.body)
       })
    })
 })

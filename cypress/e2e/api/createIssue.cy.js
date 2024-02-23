@@ -20,7 +20,6 @@ describe('Create Issue', () => {
         expect(response.status).to.equal(201)
         expect(response.body.title).to.equal(issue.title)
         expect(response.body.description).to.equal(issue.description)
-        console.log(response.body)
       })
    })
 })
