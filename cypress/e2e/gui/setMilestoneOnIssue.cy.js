@@ -1,5 +1,7 @@
 import { faker } from '@faker-js/faker'
 
+//Aula 09 - Adicionando um milestone ao issue
+
 describe('Set milestone on issue', () => {
   const issue = {
     title: `issue-${faker.datatype.uuid()}`,
